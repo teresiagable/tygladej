@@ -1,6 +1,8 @@
 package gable.tygladej;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,20 +36,21 @@ public class TestCommandLine implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		User theUser = userRepo.save(new User("Teresia","","teresia@home.se","password",LocalDateTime.now(), LocalDateTime.now()));
+/*		User theUser = userRepo.save(new User("Teresia","","teresia@home.se","password",LocalDateTime.now(), LocalDateTime.now()));
 		Fabric fabric1 = fabricRepo.save(new Fabric("Mini Ella","",FabricType.Jersey.toString(),Prints.Flowers.toString(),Colorways.Blue.toString(),"Tyglycka"));
 		Fabric fabric2 = fabricRepo.save(new Fabric("Ella","",FabricType.Jersey.toString(),Prints.Flowers.toString(),Colorways.Pink.toString(),"Tyglycka"));
-		
+		System.out.println(fabric1);
+		System.out.println(fabric2);
 		UserFabric uf1= userFabricRepo.save(new UserFabric(fabric1.getId(),theUser.getId(),120,LocalDateTime.now().minusDays(100),"Gittes Tygkälla",true,false,false));
-		UserFabric uf2= userFabricRepo.save(new UserFabric(fabric2.getId(),theUser.getId(),80,LocalDateTime.now().minusDays(100),"Gittes Tygkälla",true,false,false));
-		
-		//userFabricRepo.save(uf1);
-		//userFabricRepo.save(uf2);
-		
-		System.out.println(userFabricRepo.findAll());
-		
+		//uf1= userFabricRepo.save(new UserFabric(fabric2.getId(),theUser.getId(),80,LocalDateTime.now().minusDays(100),"Gittes Tygkälla",true,false,false));
+		*/
+/*		System.out.println(userRepo.findById(2));
+		Optional<User> me =  userRepo.findById(2);
 
-		
+		System.out.println(me.get().printMyFabrics());*/
+		Optional<UserFabric> fab =  userFabricRepo.findById(2);
+		System.out.println(fab.get().toString());
+	
 		
 	}
 

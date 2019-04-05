@@ -1,12 +1,19 @@
 package gable.tygladej.entity;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name="user")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +24,9 @@ public class User {
 	private String password;
 	private LocalDateTime createDate;
 	private LocalDateTime lastLoginDate;
+	@OneToMany(mappedBy= "user")
+	//@JoinColumn(name="id", referencedColumnName = "userId")
+	private Set<UserFabric> myFabrics;
 
 	
 	/**
@@ -37,6 +47,8 @@ public class User {
 		this.lastLoginDate = lastLoginDate;
 	}
 
+	public User() {}
+	
 	public String getName() {
 		return name;
 	}
@@ -72,7 +84,28 @@ public class User {
 	}
 	public LocalDateTime getCreateDate() {
 		return createDate;
+	}
+
+	public Set<UserFabric> getMyFabrics() {
+		return myFabrics;
+	}
+
+	public void setMyFabrics(Set<UserFabric> myFabrics) {
+		this.myFabrics = myFabrics;
+	}
+
+	@Override
+	public String toString() {
+		return "User id=" + id + ", name=" + name + ", pictureUrl=" + pictureUrl + ", email=" + email + ", password="
+				+ password + ", createDate=" + createDate + ", lastLoginDate=" + lastLoginDate 
+				//+ ", myFabrics="
+				//+ myFabrics
+				+ "]";
 	}	
+	
+	public String printMyFabrics() {
+		return "My Fabrics= ["+ myFabrics + "]";
+	}
 	
 	
 	

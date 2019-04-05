@@ -7,16 +7,21 @@ import javax.persistence.Id;
 
 @Entity
 public class Fabric {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String pictureUrl;
 	private String type;
+
 	private String print;
 	private String colorway;
 	private String designer;
-	
+//	@OneToMany(mappedBy="fabric")
+//	//@JoinColumn(name="id", referencedColumnName = "fabricId")
+//	private Set<UserFabric> myFabrics;
+		
 	/**
 	 * @param name
 	 * @param pictureUrl
@@ -33,7 +38,17 @@ public class Fabric {
 		this.print = print;
 		this.colorway = colorway;
 		this.designer = designer;
+		
+		
 	}
+	
+	public Fabric()  {}
+	
+/*	@ManyToMany(cascade = {CascadeType.PERSIST})
+    @JoinTable(name = "userfabric",
+            joinColumns = @JoinColumn(name = "fabric_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+        )*/
 	
 	public int getId() {return id;}
 	public String getName() {return name;}
@@ -48,7 +63,13 @@ public class Fabric {
 	public void setColorway(String colorway) {this.colorway = colorway;}
 	public String getDesigner() {return designer;}
 	public void setDesigner(String designer) {this.designer = designer;}
-
+//	public Set<UserFabric> getMyFabrics() {
+//		return myFabrics;
+//	}
+//
+//	public void setMyFabrics(Set<UserFabric> myFabrics) {
+//		this.myFabrics = myFabrics;
+//	}
 
 	
 	
