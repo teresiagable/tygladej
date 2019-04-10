@@ -15,15 +15,6 @@ public class UserFabric {
 	
 	@Id
 	private int id;
-	
-	//private int fabricId;
-	//private int userId;
-	private int length;
-	private LocalDateTime purchaseDate;
-	private String purchasePoint;
-	private boolean preWashed;
-	private boolean showPublic;
-	private boolean forSale;
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
@@ -31,23 +22,31 @@ public class UserFabric {
 	@ManyToOne
 	@JoinColumn(name="fabric_id")
 	private Fabric fabric;
+	private int length;
+	private LocalDateTime purchaseDate;
+	private String purchasePoint;
+	private boolean preWashed;
+	private boolean showPublic;
+	private boolean forSale;
+
 	
-	
+
 	/**
-	 * @param fabricId
-	 * @param userId
-	 * @param length in cm
+	 * @param id
+	 * @param fabric
+	 * @param user
+	 * @param length
 	 * @param purchaseDate
-	 * @param purchasePoint 
-	 * @param preWashed true/false
-	 * @param showPublic true/false
-	 * @param forSale true/false
+	 * @param purchasePoint
+	 * @param preWashed
+	 * @param showPublic
+	 * @param forSale
 	 */
-	public UserFabric(int id, int fabricId, int userId, int length, LocalDateTime purchaseDate, String purchasePoint, boolean preWashed,
-			boolean showPublic, boolean forSale) {
-		this.id=id;
-		//this.fabricId = fabricId;
-		//this.userId = userId;
+	public UserFabric(int id, Fabric fabric, User user, int length, LocalDateTime purchaseDate, String purchasePoint,
+			boolean preWashed, boolean showPublic, boolean forSale) {
+		this.id = id;
+		this.fabric = fabric;
+		this.user = user;
 		this.length = length;
 		this.purchaseDate = purchaseDate;
 		this.purchasePoint = purchasePoint;
@@ -55,14 +54,13 @@ public class UserFabric {
 		this.showPublic = showPublic;
 		this.forSale = forSale;
 	}
-	
-	
+
+
+
 	public UserFabric() {}
 
 
 	public int getId() {return id;}
-//	public int getFabricId() {return fabricId;}
-	//public int getUserId() {return userId;}
 	public int getLength() {return length;}
 	public void setLength(int length) {this.length = length;}
 	public LocalDateTime getPurchaseDate() {return purchaseDate;}
@@ -94,11 +92,4 @@ public class UserFabric {
 				+ ", user=" + user.getName() + ", fabric=" + fabric.getName() 
 				+ "]";
 	}
-
-
-
-
-	
-	
-
 }
