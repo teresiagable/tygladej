@@ -9,5 +9,7 @@ public class TygladejApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TygladejApplication.class, args);
 	}
+	
+	
 
 }

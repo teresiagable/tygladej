@@ -1,17 +1,13 @@
 package gable.tygladej;
 
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import gable.tygladej.entity.Colorways;
 import gable.tygladej.entity.Fabric;
-import gable.tygladej.entity.FabricType;
-import gable.tygladej.entity.Prints;
-import gable.tygladej.entity.User;
 import gable.tygladej.entity.UserFabric;
 import gable.tygladej.repository.FabricRepo;
 import gable.tygladej.repository.UserFabricRepo;
@@ -48,8 +44,16 @@ public class TestCommandLine implements CommandLineRunner{
 		Optional<User> me =  userRepo.findById(2);
 
 		System.out.println(me.get().printMyFabrics());*/
-		Optional<UserFabric> fab =  userFabricRepo.findById(2);
-		System.out.println(fab.get().toString());
+		Optional<UserFabric> userfab =  userFabricRepo.findById(2);
+		System.out.println("Userfabric found by id 2 "+userfab.get().toString());
+		Optional<Fabric> fabr = fabricRepo.findById(4);
+		System.out.println("Fabric found by id 3 ");
+		System.out.println(fabr.get().toString());
+		List<UserFabric> fab2 =  userFabricRepo.findByFabric(fabr.get());
+		
+		for (UserFabric userFabric : fab2) {
+			System.out.println(userFabric.getUser().getName());
+		}
 	
 		
 	}

@@ -18,9 +18,8 @@ public class Fabric {
 	private String print;
 	private String colorway;
 	private String designer;
-//	@OneToMany(mappedBy="fabric")
-//	//@JoinColumn(name="id", referencedColumnName = "fabricId")
-//	private Set<UserFabric> myFabrics;
+	private boolean isDeleted;
+
 		
 	/**
 	 * @param name
@@ -38,18 +37,15 @@ public class Fabric {
 		this.print = print;
 		this.colorway = colorway;
 		this.designer = designer;
-		
-		
+		this.isDeleted = false;	
 	}
 	
-	public Fabric()  {}
-	
-/*	@ManyToMany(cascade = {CascadeType.PERSIST})
-    @JoinTable(name = "userfabric",
-            joinColumns = @JoinColumn(name = "fabric_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-        )*/
-	
+	public Fabric() {
+		super();
+	}
+
+
+
 	public int getId() {return id;}
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}
@@ -63,13 +59,20 @@ public class Fabric {
 	public void setColorway(String colorway) {this.colorway = colorway;}
 	public String getDesigner() {return designer;}
 	public void setDesigner(String designer) {this.designer = designer;}
-//	public Set<UserFabric> getMyFabrics() {
-//		return myFabrics;
-//	}
-//
-//	public void setMyFabrics(Set<UserFabric> myFabrics) {
-//		this.myFabrics = myFabrics;
-//	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	@Override
+	public String toString() {
+		return "Fabric [id=" + id + ", name=" + name + ", pictureUrl=" + pictureUrl + ", type=" + type + ", print="
+				+ print + ", colorway=" + colorway + ", designer=" + designer + "]";
+	}
 
 	
 	
