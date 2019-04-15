@@ -14,7 +14,7 @@ import gable.tygladej.repository.FabricRepo;
 
 @Service
 @Transactional
-public class FabricServiceImpl {
+public class FabricServiceImpl implements FabricService {
 	private FabricRepo fabricRepo;
 
 	
@@ -27,29 +27,35 @@ public class FabricServiceImpl {
 	 * @param designer 
 	 */
 	
+	@Override
 	public Fabric findById(int id) {
 		
 		Optional<Fabric> result = fabricRepo.findById(id);
 		return result.orElseThrow(IllegalArgumentException::new);		
 	}
 
+	@Override
 	public List<Fabric> findFabricByFabricName(String searchName){
 		return fabricRepo.findByNameIgnoreCase(searchName);
 	}
 	
 	
+	@Override
 	public List<Fabric> findFabricByFabricType(FabricType searchType){
 		return fabricRepo.findByType(searchType.toString());
 	}
 	
+	@Override
 	public List<Fabric> findFabricByPrint(Prints thePrint){
 		return fabricRepo.findByPrint(thePrint.toString());
 	}
 	
+	@Override
 	public List<Fabric> findFabricByColorway(Colorways theColor){
 		return fabricRepo.findByColorway(theColor.toString());
 	}
 	
+	@Override
 	public List<Fabric> findFabricByDesignerLike(String theDesigner){
 		return fabricRepo.findByDesignerLike(theDesigner);
 	}
