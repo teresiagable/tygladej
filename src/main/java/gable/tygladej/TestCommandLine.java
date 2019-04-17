@@ -12,6 +12,7 @@ import gable.tygladej.entity.UserFabric;
 import gable.tygladej.repository.FabricRepo;
 import gable.tygladej.repository.UserFabricRepo;
 import gable.tygladej.repository.UserRepo;
+import gable.tygladej.service.UserFabricService;
 
 
 @Component
@@ -21,6 +22,7 @@ public class TestCommandLine implements CommandLineRunner{
 	private FabricRepo fabricRepo;
 	private UserFabricRepo userFabricRepo;	
 	private UserRepo userRepo;
+	private UserFabricService userFabricService;
 
 	public TestCommandLine(FabricRepo fabricRepo, UserFabricRepo userFabricRepo, UserRepo userRepo) {
 		super();
@@ -55,7 +57,7 @@ public class TestCommandLine implements CommandLineRunner{
 			System.out.println(userFabric.getUser().getName());
 		}
 	
-		
+
 	}
 
 }

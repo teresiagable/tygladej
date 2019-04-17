@@ -38,8 +38,7 @@ public class FabricServiceImpl implements FabricService {
 	public List<Fabric> findFabricByFabricName(String searchName){
 		return fabricRepo.findByNameIgnoreCase(searchName);
 	}
-	
-	
+		
 	@Override
 	public List<Fabric> findFabricByFabricType(FabricType searchType){
 		return fabricRepo.findByType(searchType.toString());
