@@ -8,7 +8,7 @@ import gable.tygladej.entity.UserFabric;
 
 public interface UserFabricService {
 
-	/**
+	/** table fields
 	 * UserFabric class
 	 * 
 	 * @param id

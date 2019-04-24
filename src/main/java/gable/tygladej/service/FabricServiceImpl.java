@@ -3,6 +3,7 @@ package gable.tygladej.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,9 +16,14 @@ import gable.tygladej.repository.FabricRepo;
 @Service
 @Transactional
 public class FabricServiceImpl implements FabricService {
-	private FabricRepo fabricRepo;
-
 	
+	private FabricRepo fabricRepo;
+	
+	@Autowired	
+	public FabricServiceImpl(FabricRepo fabricRepo) {
+		this.fabricRepo = fabricRepo;
+	}
+
 	/** Fabric class:
 	 * @param name
 	 * @param pictureUrl

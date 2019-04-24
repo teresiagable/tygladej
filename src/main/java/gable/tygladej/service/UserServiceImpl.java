@@ -9,7 +9,13 @@ import gable.tygladej.repository.UserRepo;
 public class UserServiceImpl implements UserService {
 	
 	private UserRepo userRepo;
-/*
+	
+	public UserServiceImpl(UserRepo userRepo) {
+		super();
+		this.userRepo = userRepo;
+	}
+	
+/* table fields:
 	this.name = name;
 	this.pictureUrl = pictureUrl;
 	this.email = email;
@@ -18,6 +24,8 @@ public class UserServiceImpl implements UserService {
 	this.lastLoginDate = lastLoginDate;
 */
 	
+
+
 	@Override
 	public User findUserById(int id) {
 		Optional<User> result = userRepo.findById(id);

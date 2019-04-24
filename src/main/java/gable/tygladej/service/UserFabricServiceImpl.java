@@ -1,6 +1,8 @@
 package gable.tygladej.service;
 
 import java.util.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +17,15 @@ import gable.tygladej.repository.UserRepo;
 public class UserFabricServiceImpl implements UserFabricService {
 	private UserFabricRepo userFabricRepo;
 	private UserRepo userRepo;
+	
+	@Autowired
+	public UserFabricServiceImpl(UserFabricRepo userFabricRepo, UserRepo userRepo) {
+		super();
+		this.userFabricRepo = userFabricRepo;
+		this.userRepo = userRepo;
+	}
 
-	/**
+	/** database table fields:
 	 * UserFabric class
 	 * 
 	 * @param id
