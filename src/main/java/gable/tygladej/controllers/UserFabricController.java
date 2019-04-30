@@ -22,7 +22,7 @@ public class UserFabricController {
 	@GetMapping("/usersfabric/{id}")
 	public ResponseEntity<UserFabric> getUsersFabric(@PathVariable int id){
 		try {
-			return ResponseEntity.ok( UFService.findUsersAllFabric(id).get(0));
+			return ResponseEntity.ok( UFService.findAllFabricsWithUserId(id).get(0));
 		
 		}catch(IllegalArgumentException e) {
 			return ResponseEntity.notFound().build();

@@ -26,9 +26,10 @@ public interface UserFabricService {
 
 	List<UserFabric> findAllUsersWithFabric(Fabric searchFabric);
 
-	List<UserFabric> findUsersAllFabric(User searchUser);
+	List<UserFabric> findAllFabricsWithUser(User searchUser);
+	//List<UserFabric> findUsersAllFabric(User searchUser);
 
-	List<UserFabric> findUsersAllFabric(int id);
+	List<UserFabric> findAllFabricsWithUserId(int id);
 
 	List<UserFabric> findUsersAllFabricsByLengthLargerThan(User theUser, int theLength);
 
@@ -39,6 +40,7 @@ public interface UserFabricService {
 	List<UserFabric> findUsersForSale(User theUser, boolean isForSale);
 
 	List<UserFabric> findAllForSale(boolean isForSale);
+
 
 
 

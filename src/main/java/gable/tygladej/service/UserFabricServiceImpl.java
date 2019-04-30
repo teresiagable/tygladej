@@ -51,13 +51,13 @@ public class UserFabricServiceImpl implements UserFabricService {
 	}
 	
 	
-	public List<UserFabric> findUsersAllFabric(int userId)
+	public List<UserFabric> findAllFabricsWithUserId(int userId)
 	{
-		return this.findUsersAllFabric(userRepo.findUserById(userId));
+		return this.findAllFabricsWithUser(userRepo.findUserById(userId));
 	}
 
 	@Override
-	public List<UserFabric> findUsersAllFabric(User searchUser) {
+	public List<UserFabric> findAllFabricsWithUser(User searchUser) {
 		return userFabricRepo.findByUser(searchUser);
 	}
 
