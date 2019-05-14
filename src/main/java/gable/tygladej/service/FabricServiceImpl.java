@@ -3,6 +3,8 @@ package gable.tygladej.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +13,7 @@ import gable.tygladej.entity.Colorways;
 import gable.tygladej.entity.Fabric;
 import gable.tygladej.entity.FabricType;
 import gable.tygladej.entity.Prints;
+import gable.tygladej.forms_and_views.FabricForm;
 import gable.tygladej.repository.FabricRepo;
 
 @Service
@@ -41,6 +44,11 @@ public class FabricServiceImpl implements FabricService {
 	}
 
 	@Override
+	public List<Fabric>getAllFabric() {
+		return (List<Fabric>) fabricRepo.findAll();
+	}
+		
+	@Override
 	public List<Fabric> findFabricByFabricName(String searchName){
 		return fabricRepo.findByNameIgnoreCase(searchName);
 	}
@@ -64,7 +72,22 @@ public class FabricServiceImpl implements FabricService {
 	public List<Fabric> findFabricByDesignerLike(String theDesigner){
 		return fabricRepo.findByDesignerLike(theDesigner);
 	}
-	
+
+	@Override
+	public Fabric save(Fabric newFabric) {
+		
+		return fabricRepo.save(newFabric);
+	}
+
+	@Override
+	public Fabric update(String fabricId, FabricForm updated)
+			throws IllegalArgumentException, EntityNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 //	public void deleteFabric(int id){
 //		Fabric result = this.findById(id);
 //		result.setDeleted(true);

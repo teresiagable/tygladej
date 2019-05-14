@@ -25,16 +25,44 @@ public class UserServiceImpl implements UserService {
 */
 	
 
-
+	/**
+	 * @param productId
+	 * @param updated
+	 * @return
+	 * @throws EntityNotFoundException
+	 */
 	@Override
 	public User findUserById(int id) {
 		Optional<User> result = userRepo.findById(id);
 		return result.orElseThrow(IllegalArgumentException::new);
+	}
+	
+	@Override
+	public List<User> findAll() {
+		return (List<User>) userRepo.findAll();
+		
 	}
 
 	@Override
 	public List<User> findUsersWithName(String searchName) {
 		return userRepo.findByNameLike(searchName);
 		
+	}
+
+	@Override
+	public User save(User newUser) {
+		return userRepo.save(newUser);
+	}
+	
+
+	@Override
+	public User update(int userId, User updatedUser) {
+		
+		User original = findUserById(userId);		
+			original.setName(updatedUser.getName());
+			original.setEmail(updatedUser.getEmail());
+			original.setPictureUrl(updatedUser.getPictureUrl());
+		return userRepo.save(original);
+	
 	}
 }

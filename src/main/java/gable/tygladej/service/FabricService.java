@@ -2,10 +2,13 @@ package gable.tygladej.service;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import gable.tygladej.entity.Colorways;
 import gable.tygladej.entity.Fabric;
 import gable.tygladej.entity.FabricType;
 import gable.tygladej.entity.Prints;
+import gable.tygladej.forms_and_views.FabricForm;
 
 public interface FabricService {
 
@@ -20,6 +23,8 @@ public interface FabricService {
 
 	Fabric findById(int id);
 
+	List<Fabric> getAllFabric();
+	
 	List<Fabric> findFabricByFabricName(String searchName);
 
 	List<Fabric> findFabricByFabricType(FabricType searchType);
@@ -29,5 +34,10 @@ public interface FabricService {
 	List<Fabric> findFabricByColorway(Colorways theColor);
 
 	List<Fabric> findFabricByDesignerLike(String theDesigner);
+
+	Fabric save(Fabric newfabric);
+
+	Fabric update(String fabricId, FabricForm updated) throws IllegalArgumentException, EntityNotFoundException;
+	
 
 }

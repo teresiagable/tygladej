@@ -2,19 +2,23 @@ package gable.tygladej.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import gable.tygladej.entity.Colorways;
 import gable.tygladej.entity.Fabric;
 import gable.tygladej.entity.FabricType;
 import gable.tygladej.entity.Prints;
-import gable.tygladej.entity.UserFabric;
+import gable.tygladej.forms_and_views.FabricForm;
 import gable.tygladej.service.FabricService;
-import gable.tygladej.service.UserFabricService;
 
 @RestController
 public class FabricController {
@@ -38,6 +42,33 @@ public class FabricController {
 			return ResponseEntity.notFound().build();
 		}		
 	}
+	
+	@GetMapping("/fabric/")
+	public ResponseEntity<List<Fabric>> getAllFabric(){
+		try {
+			return ResponseEntity.ok( FService.getAllFabric());
+		
+		}catch(IllegalArgumentException e) {
+			return ResponseEntity.notFound().build();
+		}		
+	}
+	
+	@PostMapping("/fabric")
+	public ResponseEntity<Fabric> create(@RequestBody @Valid FabricForm form){
+		
+		//Fabric(String name, String pictureUrl, String type, String print, String colorway, String designer)
+		
+		Fabric newFabric = FService.save(new Fabric(
+								form.getName(),
+								form.getPictureUrl(),
+								form.getType(),
+								form.getPrint(),
+								form.getColorway(),
+								form.getDesigner()));
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(newFabric);
+	}
+	
 	@GetMapping("/fabric/type={fabricType}")
 	public ResponseEntity<List<Fabric>> getFabricOfType(@PathVariable String fabricType){
 		try {
@@ -70,4 +101,6 @@ public class FabricController {
 			return ResponseEntity.notFound().build();
 		}		
 	}
+	
+	
 }
