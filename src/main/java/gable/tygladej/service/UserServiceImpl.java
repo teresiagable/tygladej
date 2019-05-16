@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 		return (List<User>) userRepo.findAll();
 		
 	}
-
+ 
 	@Override
 	public List<User> findUsersWithName(String searchName) {
 		return userRepo.findByNameLike(searchName);

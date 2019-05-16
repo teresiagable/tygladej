@@ -51,12 +51,16 @@ public class Fabric {
 	public void setName(String name) {this.name = name;}
 	public String getPictureUrl() {return pictureUrl;}
 	public void setPictureUrl(String pictureUrl) {this.pictureUrl = pictureUrl;}
-	public String getType() {return type;}
+	
+	public FabricType getType() {return FabricType.valueOf(type);}
 	public void setType(String type) {this.type = type;}
-	public String getPrint() {return print;}
+	
+	public Prints getPrint() {return Prints.valueOf(print);}
 	public void setPrint(String print) {this.print = print;}
-	public String getColorway() {return colorway;}
+	
+	public Colorways getColorway() {return Colorways.valueOf(colorway);}
 	public void setColorway(String colorway) {this.colorway = colorway;}
+	
 	public String getDesigner() {return designer;}
 	public void setDesigner(String designer) {this.designer = designer;}
 

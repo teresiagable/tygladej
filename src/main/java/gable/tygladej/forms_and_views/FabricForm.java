@@ -16,7 +16,7 @@ public class FabricForm {
 	private String print;				
 	private String colorway;
 	private String designer;
-	private boolean isDeleted;
+	private boolean isDeleted;	
 	public int getId() {
 		return id;
 	}
