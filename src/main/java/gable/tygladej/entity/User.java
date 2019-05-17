@@ -24,9 +24,9 @@ public class User {
 	private String password;
 	private LocalDateTime createDate;
 	private LocalDateTime lastLoginDate;
-	@OneToMany(mappedBy= "user")
+//	@OneToMany(mappedBy= "user")
 	//@JoinColumn(name="id", referencedColumnName = "userId")
-	private Set<UserFabric> myFabrics;
+//	private Set<UserFabric> myFabrics;
 
 	
 	/**
@@ -86,13 +86,13 @@ public class User {
 		return createDate;
 	}
 
-	public Set<UserFabric> getMyFabrics() {
-		return myFabrics;
-	}
-
-	public void setMyFabrics(Set<UserFabric> myFabrics) {
-		this.myFabrics = myFabrics;
-	}
+//	public Set<UserFabric> getMyFabrics() {
+//		return myFabrics;
+//	}
+//
+//	public void setMyFabrics(Set<UserFabric> myFabrics) {
+//		this.myFabrics = myFabrics;
+//	}
 
 	@Override
 	public String toString() {
@@ -103,9 +103,9 @@ public class User {
 				+ "]";
 	}	
 	
-	public String printMyFabrics() {
-		return "My Fabrics= ["+ myFabrics + "]";
-	}
+//	public String printMyFabrics() {
+//		return "My Fabrics= ["+ myFabrics + "]";
+//	}
 	
 	
 	

@@ -52,13 +52,13 @@ public class Fabric {
 	public String getPictureUrl() {return pictureUrl;}
 	public void setPictureUrl(String pictureUrl) {this.pictureUrl = pictureUrl;}
 	
-	public FabricType getType() {return FabricType.valueOf(type);}
+	public String getType() {return type;}
 	public void setType(String type) {this.type = type;}
 	
-	public Prints getPrint() {return Prints.valueOf(print);}
+	public String getPrint() {return print;}
 	public void setPrint(String print) {this.print = print;}
 	
-	public Colorways getColorway() {return Colorways.valueOf(colorway);}
+	public String getColorway() {return colorway;}
 	public void setColorway(String colorway) {this.colorway = colorway;}
 	
 	public String getDesigner() {return designer;}

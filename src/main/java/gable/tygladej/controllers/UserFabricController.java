@@ -27,43 +27,30 @@ public class UserFabricController {
 	@CrossOrigin("*")
 	@GetMapping("/usersfabric/{id}")
 	public ResponseEntity<List<UserFabricForm>> getUsersFabric(@PathVariable int id) {
-		System.out.println("kalle");
 		try {
 			
 			List<UserFabric> userFabrics = UFService.findAllFabricsWithUserId(id);
 			List<UserFabricForm> UFForms = new ArrayList<>();
-//			UserFabricForm UFForm = new UserFabricForm();
 			for (UserFabric uF : userFabrics) {
-//				UserFabricForm UFForm = new UserFabricForm(uF.getId(), uF.getUser(), uF.getFabric(), uF.getLength(),
-//						uF.getPurchaseDate(), uF.getPurchasePoint(), uF.isPreWashed(), uF.isShowPublic(),
-//						uF.isForSale());
-
 
 				UserFabricForm UFForm = new UserFabricForm();
 				UFForm.setId(uF.getId());
 				UFForm.setUserName(uF.getUser().getName());
 				UFForm.setFabricName(uF.getFabric().getName());
+				UFForm.setType(uF.getFabric().getType());
+				UFForm.setPrint(uF.getFabric().getPrint());
 				UFForm.setColor(uF.getFabric().getColorway());
-//				FabricForm(uF.getId(), uF.getUser(), uF.getFabric(), uF.getLength(),
-//						uF.getPurchaseDate(), uF.getPurchasePoint(), uF.isPreWashed(), uF.isShowPublic(),
-//						uF.isForSale()));
-				UFForms.add(UFForm);
-//				UFForms.add(UFForm);
-//				break;
-				
-				
-			}	
+				UFForm.setLength(uF.getLength());
+				UFForm.setPurchaseDate(uF.getPurchaseDate());
+				UFForm.setPurchasePoint(uF.getPurchasePoint());
+				UFForm.setPreWashed(uF.isPreWashed());
+				UFForm.setShowPublic(uF.isShowPublic());
+				UFForm.setForSale(uF.isForSale());
 
-//			return ResponseEntity.ok(UFForm);
-//			System.out.println(UFForms.size());
+				UFForms.add(UFForm);
+			}	
 			return ResponseEntity.ok(UFForms);
 			
-			
-//			UserFabric uF = userFabrics.get(0);
-//			UserFabricForm UFForm = new UserFabricForm(uF.getId(), uF.getUser(), uF.getFabric(), uF.getLength(),
-//					uF.getPurchaseDate(), uF.getPurchasePoint(), uF.isPreWashed(), uF.isShowPublic(),
-//					uF.isForSale());
-//			return ResponseEntity.ok(UFForm);
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.notFound().build();
 		}

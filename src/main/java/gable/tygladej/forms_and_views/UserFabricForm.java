@@ -26,9 +26,9 @@ public class UserFabricForm {
 	private int id;
 	private String userName;
 	private String fabricName;
-	private FabricType type;
-	private Prints print;
-	private Colorways color;
+	private String type;
+	private String print;
+	private String color;
 	private int length;
 	private LocalDateTime purchaseDate;
 	private String purchasePoint;
@@ -41,21 +41,21 @@ public class UserFabricForm {
 
 	}
 
-	public UserFabricForm(int id, User user, Fabric fabric, int length, LocalDateTime purchaseDate,
-			String purchasePoint, boolean preWashed, boolean showPublic, boolean forSale) {
-		this.id = id;
-		this.userName =user.getName();
-		this.fabricName = fabric.getName();
-		this.type = fabric.getType();
-		this.print=fabric.getPrint();
-		this.color = fabric.getColorway();
-		this.length = length;
-		this.purchaseDate = purchaseDate;
-		this.purchasePoint = purchasePoint;
-		this.preWashed = preWashed;
-		this.showPublic = showPublic;
-		this.forSale = forSale;
-	}
+//	public UserFabricForm(int id, User user, Fabric fabric, int length, LocalDateTime purchaseDate,
+//			String purchasePoint, boolean preWashed, boolean showPublic, boolean forSale) {
+//		this.id = id;
+//		this.userName =user.getName();
+//		this.fabricName = fabric.getName();
+//		this.type = fabric.getType();
+//		this.print=fabric.getPrint();
+//		this.color = fabric.getColorway();
+//		this.length = length;
+//		this.purchaseDate = purchaseDate;
+//		this.purchasePoint = purchasePoint;
+//		this.preWashed = preWashed;
+//		this.showPublic = showPublic;
+//		this.forSale = forSale;
+//	}
 
 	public int getId() {
 		return id;
@@ -81,27 +81,27 @@ public class UserFabricForm {
 		this.fabricName = fabricName;
 	}
 
-	public FabricType getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(FabricType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
-	public Prints getPrint() {
+	public String getPrint() {
 		return print;
 	}
 
-	public void setPrint(Prints print) {
+	public void setPrint(String print) {
 		this.print = print;
 	}
 
-	public Colorways getColor() {
+	public String getColor() {
 		return color;
 	}
 
-	public void setColor(Colorways color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 
